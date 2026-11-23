@@ -1,0 +1,44 @@
+# RegionTick 1.0.0 - Paper 1.21.11
+# Tick reductions shorten supported active-item use durations. 20 ticks = 1 second.
+settings:
+  enabled: true
+  utilities-enabled: true
+  # Prevents a calculated reduction from shortening an action below this many ticks.
+  minimum-duration-ticks: 1
+  # How often ping/TPS settings are checked. 20 = once per second.
+  refresh-interval-ticks: 20
+
+ping:
+  enabled: true
+  tiers:
+    - min: 80
+      max: 150
+      reduce-ticks: 3
+    - min: 151
+      max: 200
+      reduce-ticks: 5
+    - min: 201
+      max: 9999
+      reduce-ticks: 7
+
+tps:
+  enabled: true
+  below: 19.0
+  reduce-ticks: 4
+  # Uses the lowest of the recent 1m/5m/15m TPS values.
+  sample: 0
+
+actions:
+  food: { enabled: true, reduce-ticks: 0 }
+  golden-apples: { enabled: true, reduce-ticks: 0 }
+  potions: { enabled: true, reduce-ticks: 0 }
+  bow: { enabled: true, reduce-ticks: 0 }
+  crossbow: { enabled: true, reduce-ticks: 0 }
+  trident: { enabled: true, reduce-ticks: 0 }
+  shield: { enabled: false, reduce-ticks: 0 }
+
+# Important limitations:
+# - Rod casting is instant in vanilla; there is no charge duration to reduce.
+# - Shield raising is client-side/instant; Paper cannot shorten its animation.
+# - Hit registration/network latency cannot be made faster by a plugin.
+# - Active-item shortening may reduce bow draw power because vanilla calculates power from draw time.

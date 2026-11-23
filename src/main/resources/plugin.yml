@@ -1,0 +1,15 @@
+name: RegionTick
+version: 1.0.0
+main: com.regiontick.RegionTick
+api-version: '1.21.11'
+author: OpenAI
+description: Configurable ping and TPS based item-use timing adjustments.
+commands:
+  region:
+    description: RegionTick configuration command
+    usage: /region tick
+    permission: regiontick.admin
+permissions:
+  regiontick.admin:
+    description: Allows managing RegionTick
+    default: op
