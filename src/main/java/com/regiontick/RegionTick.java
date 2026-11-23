@@ -431,26 +431,27 @@ public final class RegionTick extends JavaPlugin
                 );
             }
 
-            case "ping" -> {
+            
+case "ping" -> {
 
-                sender.sendMessage(
-                        ChatColor.GOLD + "Ping compensation tiers:"
-                );
+    sender.sendMessage(
+            ChatColor.GOLD + "Ping compensation tiers:"
+    );
 
-                for (Map<?, ?> tier :
-                        getConfig().getMapList("ping.tiers")) {
+    for (Map<?, ?> tier :
+            getConfig().getMapList("ping.tiers")) {
 
-                    sender.sendMessage(
-                            ChatColor.YELLOW
-                                    + number(tier.get("min"), 0)
-                                    + "-"
-                                    + number(tier.get("max"), 999999)
-                                    + "ms: -"
-                                    + number(tier.get("reduce-ticks"), 0)
-                                    + " ticks"
-                    );
-                }
-            }
+        sender.sendMessage(
+                ChatColor.YELLOW
+                        + String.valueOf(number(tier.get("min"), 0))
+                        + "-"
+                        + number(tier.get("max"), 999999)
+                        + "ms: -"
+                        + number(tier.get("reduce-ticks"), 0)
+                        + " ticks"
+        );
+    }
+}
 
             case "tps" -> {
 
